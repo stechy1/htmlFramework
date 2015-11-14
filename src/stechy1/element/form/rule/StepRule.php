@@ -3,7 +3,7 @@
 namespace stechy1\html\element\form\rule;
 
 
-use model\html\NameValuePair;
+use stechy1\html\NameValuePair;
 
 class StepRule extends ARule {
 

@@ -3,8 +3,8 @@
 namespace stechy1\html\element;
 
 
-use model\html\NameValuePair;
-use model\html\StyleValue;
+use stechy1\html\NameValuePair;
+use stechy1\html\StyleValue;
 
 interface IDecorative {
 

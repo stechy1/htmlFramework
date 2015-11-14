@@ -3,18 +3,19 @@
 namespace stechy1\html\element\form\rule;
 
 
+
 /**
- * Class FileRequireRule
- * @package model\html\element\form\rule
- * Třída představuje pravidlo pro povinné přiložení souboru.
+ * Class RequiredRule
+ * @package stechy1\html\element\form\rule
+ * Třída představuje pravidlo povinného vstupního textového pole.
  */
-class FileRequireRule extends ARule {
+class RequiredRule extends ARule {
 
     /**
      * RequiredRule constructor.
      */
     public function __construct() {
-        return parent::__construct('Soubor je povinný');
+        return parent::__construct('Povinné pole');
     }
 
     /**
@@ -23,10 +24,12 @@ class FileRequireRule extends ARule {
      * @return boolean True, pokud je hodnota validní, jinak false.
      */
     public function validateRule($value) {
-        return true;
+        return !empty($value);
     }
 
     function __toString() {
         return 'required';
     }
+
+
 }

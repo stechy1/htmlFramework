@@ -3,11 +3,11 @@
 namespace stechy1\html\element\form\rule;
 
 
-use model\html\NameValuePair;
+use stechy1\html\NameValuePair;
 
 /**
  * Class MaxLengthRule
- * @package model\html\element\form\rule
+ * @package stechy1\html\element\form\rule
  * Třída představuje pravidlo maximální délky vstupního řetězce.
  */
 class MaxLengthRule extends ARule {

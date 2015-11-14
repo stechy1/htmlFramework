@@ -3,7 +3,7 @@
 namespace app\html\element\form\rule;
 
 
-use model\html\element\form\rule\ARule;
+use stechy1\html\element\form\rule\ARule;
 
 class MinLengthRule extends ARule {
 
