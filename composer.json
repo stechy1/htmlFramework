@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "stechy1\\": "src/"
+      "stechy1\\": "src/stechy1"
     }
   }
 }
