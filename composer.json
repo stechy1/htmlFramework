@@ -2,7 +2,7 @@
   "name": "stechy1/html",
   "type": "library",
   "description": "Jednoduchý html framework pro PHP s integrovaným zpracováním formulářů",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
