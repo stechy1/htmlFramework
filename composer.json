@@ -1,9 +1,15 @@
 {
   "name": "stechy1/html",
   "type": "library",
+  "version": "1.0.0",
   "description": "Jednoduchý html framework pro PHP s integrovaným zpracováním formulářů",
-  "minimum-stability": "stable",
-  "license": "proprietary",
+  "keywords": [
+    "html",
+    "php",
+    "form"
+  ],
+  "homepage": "https://github.com/stechy1/html",
+  "license": "MIT",
   "authors": [
     {
       "name": "Petr Štechmüller",
@@ -11,10 +17,15 @@
       "role": "Developer"
     }
   ],
-  "autoload": {
-    "classmap": [
-      "src/"
-    ]
+  "require": {
+    "php": ">=5.3.0"
   },
-  "include-path": ["src/"]
+  "autoload": {
+    "psr-0": {
+      "stechy1": "src"
+    },
+    "psr-4": {
+      "stechy1\\": "src/"
+    }
+  }
 }
