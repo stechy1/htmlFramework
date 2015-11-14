@@ -1,0 +1,20 @@
+{
+  "name": "stechy1/html",
+  "type": "library",
+  "description": "Jednoduchý html framework pro PHP s integrovaným zpracováním formulářů",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Petr Štechmüller",
+      "email": "petr.stechmuller@seznam.cz",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "include-path": ["src/"]
+}
