@@ -26,7 +26,7 @@
       "stechy1": "src"
     },
     "psr-4": {
-      "stechy1\\": "src/"
+      "stechy1\\": "src/stechy1"
     }
   }
 }
