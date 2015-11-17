@@ -3,6 +3,7 @@
 namespace stechy1\html\element\form\control;
 
 
+use stechy1\html\element\AElement;
 use stechy1\html\NameValuePair;
 
 class LabelControl extends AFormControl {
@@ -11,9 +12,9 @@ class LabelControl extends AFormControl {
 
     /**
      * TextAreaControl constructor.
-     * @param null $label Text v labelu.
+     * @param AElement[]|AElement|string|null $label Text v labelu.
      */
-    public function __construct($label) {
+    public function __construct($label = null) {
         parent::__construct(self::SIGN, null);
         $this->addContent($label);
 

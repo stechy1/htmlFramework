@@ -64,6 +64,9 @@ final class FormElement extends AElement {
      * @param $control AElement[] Pole kontrolek.
      */
     private function addControl($control) {
+        if (empty($control))
+            return;
+
         foreach($control as $c) {
             if($c instanceof AFormControl) {
                 $name = $c->getName();
@@ -79,12 +82,16 @@ final class FormElement extends AElement {
         }
     }
 
+    /**
+     * Zvaliduje formulář
+     * Nastaví příznak $valid
+     */
     private function checkValidity() {
         $this->valid = true;
 
         foreach($this->controls as $control) {
             if(!$control->isValid()) {
-                $this->errorArray[] = array_merge($this->errorArray, $control->getErrors());
+                $this->errorArray = array_merge($this->errorArray, $control->getErrors());
             }
         }
 
@@ -97,9 +104,7 @@ final class FormElement extends AElement {
         return parent::build();
     }
 
-    public function addContent($content) {
-        parent::addContent($content);
-
+    private function addFormContent($content) {
         if($content instanceof AFormControl) {
             $name = $content->getName();
             if($this->existKey($name)) {
@@ -110,6 +115,23 @@ final class FormElement extends AElement {
         }
         else
             $this->addControl($content->content);
+    }
+
+    /**
+     * Nastaví obsah
+     *
+     * @param $content AElement|string|array Obsah elementu
+     * @return $this
+     */
+    public function addContent($content) {
+        parent::addContent($content);
+
+        if (is_array($content)) {
+            foreach($content as $c) {
+                $this->addFormContent($c);
+            }
+        } else
+            $this->addFormContent($content);
     }
 
     /**

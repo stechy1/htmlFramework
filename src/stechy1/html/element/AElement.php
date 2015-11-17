@@ -21,6 +21,10 @@ abstract class AElement implements IElement, IDecorative {
      */
     protected $id;
     /**
+     * @var array|null|AElement|string Obsah elementu
+     */
+    protected $content;
+    /**
      * @var string[] Pole CSS tříd.
      */
     protected $classArray = array();
@@ -40,6 +44,9 @@ abstract class AElement implements IElement, IDecorative {
      * @var bool True, pokud je HTML element párový, jinak false.
      */
     protected $pair;
+    /**
+     * @var bool True, pokud se má obsah escapovat, jina k false.
+     */
     protected $escape;
 
     /**
@@ -132,11 +139,14 @@ abstract class AElement implements IElement, IDecorative {
 
     /**
      * Nastaví obsah.
-     * @param $content AElement|string Obsah elementu.
+     * @param $content AElement[]|AElement|string|array Obsah elementu.
      * @return $this
      */
     public function addContent($content) {
-        $this->content[] = $content;
+        if(is_array($content))
+            $this->content = array_merge($this->content, $content);
+        else
+            $this->content[] = $content;
 
         return $this;
     }

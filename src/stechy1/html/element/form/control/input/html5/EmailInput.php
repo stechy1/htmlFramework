@@ -11,9 +11,10 @@ class EmailInput extends AInputControll {
     const TYPE = 'email';
 
     /**
-     * EmailInput constructor.
-     * @param string $name Název kontrolky.
-     * @param null $label Popisek.
+     * EmailInput constructor
+     *
+     * @param string $name Název kontrolky
+     * @param null $label Popisek
      */
     public function __construct($name, $label = null) {
         $this->addRule(new EmailRule());

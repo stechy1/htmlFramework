@@ -2,8 +2,6 @@
 
 namespace stechy1\html\element\form\rule;
 
-
-
 /**
  * Class RequiredRule
  * @package stechy1\html\element\form\rule

@@ -57,8 +57,11 @@ class OrderedList extends AElement {
      * @param $value string
      * @return ListItem
      */
-    public function generateListItem($key, $value) {
-        return new ListItem($value);
+    protected function generateListItem($key, $value) {
+        $item = new ListItem($value);
+        $item->setID($key);
+
+        return $item;
     }
 
 }

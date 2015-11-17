@@ -8,21 +8,23 @@ use stechy1\html\NameValuePair;
 
 class FileInput extends AInputControll {
 
-    const TYPE = 'fil';
+    const TYPE = 'file';
 
     /**
-     * FileInput constructor.
-     * @param string $name Název kontrolky.
-     * @param null $label Popisek.
+     * FileInput constructor
+     *
+     * @param string $name Název kontrolky
+     * @param null $label Popisek
      */
     public function __construct($name, $label = null) {
         return parent::__construct(self::TYPE, $name, $label);
     }
 
     /**
-     * Specifikuje typ souboru.
+     * Specifikuje typ souboru
+     *
      * @param $accept string Typ souboru
-     * @return $this Vrátí sám sebe.
+     * @return $this Vrátí sám sebe
      */
     public function setAccept ($accept) {
         $this->addAttribute(new NameValuePair('accept', $accept));

@@ -4,7 +4,7 @@
 namespace stechy1\html\element\form;
 
 
-interface IFormFactory extends IValidated{
+interface IFormFactory extends IValidated {
 
     /**
      * Vyrenderuje formulář.

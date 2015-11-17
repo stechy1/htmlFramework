@@ -48,9 +48,10 @@ abstract class ARule {
     protected $errorMessage;
 
     /**
-     * ARule constructor.
-     * @param $errorMessage string Chybová zpráva při nesplnění pravidla.
-     * @param $rule string Samotné znění pravidla.
+     * ARule constructor
+     *
+     * @param $errorMessage string Chybová zpráva při nesplnění pravidla
+     * @param $rule string Samotné znění pravidla
      */
     public function __construct($errorMessage, $rule = null) {
         $this->rule = $rule;
@@ -60,17 +61,19 @@ abstract class ARule {
     }
 
     /**
-     * Vrátí chybovou zprávu pravidla.
-     * @return string Chybová zpráva.
+     * Vrátí chybovou zprávu pravidla
+     *
+     * @return string Chybová zpráva
      */
     public function getErrorMessage() {
         return $this->errorMessage;
     }
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     abstract public function validateRule($value);
 

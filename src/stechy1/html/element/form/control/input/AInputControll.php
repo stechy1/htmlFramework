@@ -26,39 +26,36 @@ abstract class AInputControll extends AFormControl {
         return $this;
     }
 
-    /**
-     * Nastaví minimální hodnotu čísla.
-     * @param $min int Minimální hodnota.
-     * @return $this Vrátí sám sebe.
-     */
-    public function setMinValue($min) {
-        $this->addRule(new MinValueRule($min));
-        //$this->addAttribute(new NameValuePair('min', $min));
-
-        return $this;
-    }
-
-    /**
-     * Nastaví maximální hodnotu čísla.
-     * @param $maxValue int Maximální hodnota.
-     * @return $this Vrátí sám sebe
-     */
-    public function setMaxValue($maxValue) {
-        $this->addRule(new MaxValueRule($maxValue));
-        //$this->addAttribute(new NameValuePair('max', $maxValue));
-
-        return $this;
-    }
-
-    /**
-     * Nastaví krokování čísla kontrolky.
-     * @param $step int Krok.
-     * @return $this Vrátí sám sebe.
-     */
-    public function setStep($step) {
-        //$this->addRule(new StepRule($step));
-        $this->addAttribute(new NameValuePair('step', $step));
-
-        return $this;
-    }
+//    /**
+//     * Nastaví minimální hodnotu čísla.
+//     * @param $min int Minimální hodnota.
+//     * @return $this Vrátí sám sebe.
+//     */
+//    public function setMinValue($min) {
+//        $this->addRule(new MinValueRule($min));
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Nastaví maximální hodnotu čísla.
+//     * @param $maxValue int Maximální hodnota.
+//     * @return $this Vrátí sám sebe
+//     */
+//    public function setMaxValue($maxValue) {
+//        $this->addRule(new MaxValueRule($maxValue));
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Nastaví krokování čísla kontrolky.
+//     * @param $step int Krok.
+//     * @return $this Vrátí sám sebe.
+//     */
+//    public function setStep($step) {
+//        $this->addAttribute(new NameValuePair('step', $step));
+//
+//        return $this;
+//    }
 }

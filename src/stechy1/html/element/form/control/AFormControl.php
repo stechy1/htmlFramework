@@ -33,20 +33,19 @@ abstract class AFormControl extends AElement implements IControl {
 
     /**
      * @param string $sign Značka elementu
-     * @param string $name Název kontrolky
-     * @param null $label Popisek.
+     * @param string|null $name Název kontrolky
+     * @param AElement|string|null $label Popisek.
      */
-    public function __construct($sign, $name, $label = null) {
+    public function __construct($sign, $name = null, $label = null) {
         parent::__construct($sign);
         $this->name = $name;
         $this->setID($name);
-        //$this->label = $label;
         if($label !== null) {
-            $this->label = new LabelControl($label);
+            if (is_string($label))
+                $label = new LabelControl($label);
+            $this->label = $label;
             $this->label->setFor($name);
-            //$this->label->addClass('form-control');
         }
-
 
         return $this;
     }
@@ -149,11 +148,15 @@ abstract class AFormControl extends AElement implements IControl {
 
     /**
      * Nastaví label pro kontrolku.
-     * @param LabelControl $label
+     * @param LabelControl|string $label
      * @return $this Vrátí sám sebe.
      */
     public function setLabel($label) {
+        if (is_string($label))
+            $label = (new LabelControl($label));
+
         $this->label = $label;
+        $this->label->addAttribute(new NameValuePair("for", $this->getName()));
 
         return $this;
     }
