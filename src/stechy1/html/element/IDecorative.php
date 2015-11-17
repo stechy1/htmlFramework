@@ -20,7 +20,7 @@ interface IDecorative {
      * Přidá elementu třídu stylu
      *
      * @param $class string|array Název třídy
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function addClass($class);
 
@@ -28,7 +28,7 @@ interface IDecorative {
      * Přidá danému elementu styl
      *
      * @param $style StyleValue|array Nový styl
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function addStyle($style);
 
@@ -36,7 +36,7 @@ interface IDecorative {
      * Přidá danému elementu atribut
      *
      * @param $attribute NameValuePair|string|array Nový atribut
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function addAttribute($attribute);
 }

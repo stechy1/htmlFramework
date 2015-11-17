@@ -25,7 +25,7 @@ class FileInput extends AInputControll {
      * Specifikuje typ souboru
      *
      * @param $accept string Typ souboru
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setAccept ($accept) {
         $this->addAttribute(new NameValuePair('accept', $accept));
