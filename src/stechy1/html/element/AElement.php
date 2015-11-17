@@ -9,15 +9,15 @@ use stechy1\html\NameValuePair;
 abstract class AElement implements IElement, IDecorative {
 
     /**
-     * @var string Obsah HTML kódu.
+     * @var string Obsah HTML kódu
      */
     protected $html = '';
     /**
-     * @var string  Značka HTML elementu.
+     * @var string  Značka HTML elementu
      */
     protected $sign;
     /**
-     * @var string ID HTML elementu.
+     * @var string ID HTML elementu
      */
     protected $id;
     /**
@@ -25,15 +25,15 @@ abstract class AElement implements IElement, IDecorative {
      */
     protected $content;
     /**
-     * @var string[] Pole CSS tříd.
+     * @var string[] Pole CSS tříd
      */
     protected $classArray = array();
     /**
-     * @var StyleValue[] Pole StyleValue objektů představující styly.
+     * @var StyleValue[] Pole StyleValue objektů představující styly
      */
     protected $styleArray = array();
     /**
-     * @var NameValuePair[] Pole NameValuePair objektů představující jednotlivé attributy.
+     * @var NameValuePair[] Pole NameValuePair objektů představující jednotlivé attributy
      */
     protected $attributeArray = array();
     /**
@@ -41,18 +41,19 @@ abstract class AElement implements IElement, IDecorative {
      */
     protected $contentArray = array();
     /**
-     * @var bool True, pokud je HTML element párový, jinak false.
+     * @var bool True, pokud je HTML element párový, jinak false
      */
     protected $pair;
     /**
-     * @var bool True, pokud se má obsah escapovat, jina k false.
+     * @var bool True, pokud se má obsah escapovat, jina k false
      */
     protected $escape;
 
     /**
-     * AElement constructor.
-     * @param $sign string HTML značka popisující HTML element.
-     * @param AElement|array|string $content
+     * AElement constructor
+     *
+     * @param $sign string HTML značka popisující HTML element
+     * @param AElement[]|AElement|string|null $content
      */
     public function __construct($sign, $content = null) {
         $this->sign = $sign;
@@ -67,8 +68,9 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Nastaví elementu ID.
-     * @param $id string Název IDcka.
+     * Nastaví elementu ID
+     *
+     * @param $id string Název IDcka
      * @return $this
      */
     public function setID($id) {
@@ -78,16 +80,17 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Odebere elementu ID.
+     * Odebere elementu ID
      */
     public function removeID() {
         $this->id = null;
     }
 
     /**
-     * Přidá elementu třídu stylu.
-     * @param $class string|array Název třídy.
-     * @return $this Vrátí sám sebe.
+     * Přidá elementu třídu stylu
+     *
+     * @param $class string|array Název třídy
+     * @return $this
      */
     public function addClass($class) {
         if(is_array($class))
@@ -99,20 +102,21 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Odebere třídu z atributů.
+     * Odebere třídu z atributů
+     *
      * @param $class string Název třídy
      */
     public function removeClass($class) {
         $key = array_search($class, $this->classArray);
         if($key)
             unset($this->classArray[$key]);
-        //array_$this->classArray
     }
 
     /**
-     * Přidá danému elementu styl.
-     * @param $style StyleValue|array Nový styl.
-     * @return $this Vrátí sám sebe.
+     * Přidá danému elementu styl
+     *
+     * @param $style StyleValue|array Nový styl
+     * @return $this
      */
     public function addStyle($style) {
         if(is_array($style))
@@ -124,9 +128,10 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Přidá danému elementu atribut.
-     * @param $attribute NameValuePair|string|array Nový atribut.
-     * @return $this Vrátí sám sebe.
+     * Přidá danému elementu atribut
+     *
+     * @param $attribute NameValuePair|string|array Nový atribut
+     * @return $this
      */
     public function addAttribute($attribute) {
         if(is_array($attribute))
@@ -139,7 +144,8 @@ abstract class AElement implements IElement, IDecorative {
 
     /**
      * Nastaví obsah.
-     * @param $content AElement[]|AElement|string|array Obsah elementu.
+     *
+     * @param $content AElement[]|AElement|string|array Obsah elementu
      * @return $this
      */
     public function addContent($content) {
@@ -153,6 +159,7 @@ abstract class AElement implements IElement, IDecorative {
 
     /**
      * Nastaví, zda-li se má obsah escapovat či nikoliv
+     *
      * @param $escape bool True, po zapnutí escapování, jinak false
      * @return $this
      */
@@ -163,7 +170,7 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Sestavý validní HTML kód.
+     * Sestavý validní HTML kód
      */
     public function build() {
         $this->openTag();
@@ -176,7 +183,7 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Otevře značku a zapíše k ní všechny atributy.
+     * Otevře značku a zapíše k ní všechny atributy
      */
     protected function openTag() {
         $this->html .= '<' . $this->sign . ' ';
@@ -195,14 +202,12 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Metoda je zavolána před začátkem sestavování obsahu elementu.
+     * Metoda je zavolána před začátkem sestavování obsahu elementu
      */
-    protected function beforeWriteContent() {
-
-    }
+    protected function beforeWriteContent() {}
 
     /**
-     * Metoda, která se stará o samotné sestavení obsahu elementu.
+     * Metoda, která se stará o samotné sestavení obsahu elementu
      */
     protected function writeContent() {
         if (!empty($this->content))
@@ -218,18 +223,21 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * Metoda je zavolána po sestavení obsahu elementu.
+     * Metoda je zavolána po sestavení obsahu elementu
      */
     protected function afterWriteContent() {
 
     }
 
+    /**
+     * Metoda uzavře element
+     */
     protected function closeTag() {
         if($this->pair)
             $this->html .= '</' . $this->sign . '>';
     }
     /**
-     * @return string Vrátí validní HTML kód, pokud není sestavený, tak ho sestaví.
+     * @return string Vrátí validní HTML kód, pokud není sestavený, tak ho sestaví
      */
     public function render() {
         if($this->html == null)
@@ -239,7 +247,9 @@ abstract class AElement implements IElement, IDecorative {
     }
 
     /**
-     * @return boolean
+     * Zjistí, zda-li je element párový, či nikoliv
+     *
+     * @return boolean True, pokud je element párový, jinak false
      */
     public function isPair() {
         return $this->pair;

@@ -11,8 +11,9 @@ class WeekInput extends ANumericInputControl {
     const TYPE = 'week';
 
     /**
-     * WeekInput constructor.
-     * @param string $name Název kontrolky.
+     * WeekInput constructor
+     *
+     * @param string $name Název kontrolky
      * @param int|null $value Aktuální hodnota
      * @param int|null $min Minimální hodnota
      * @param int|null $max Maximální hodnota

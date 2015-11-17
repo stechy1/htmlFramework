@@ -5,7 +5,6 @@ namespace stechy1\html\element\form\control;
 
 use Exception;
 use stechy1\html\element\AElement;
-use stechy1\html\element\ListItem;
 
 class SelectControl extends AFormControl {
 
@@ -14,10 +13,11 @@ class SelectControl extends AFormControl {
     private $items;
 
     /**
-     * SelectControl constructor.
+     * SelectControl constructor
+     *
      * @param string $name
      * @param $items OptionControl[]|OptionControl|string[]
-     * @param null $label
+     * @param AElement|string|null $label
      */
     public function __construct ($name, $items, $label = null) {
         parent::__construct(self::SIGN, $name, $label);
@@ -25,28 +25,27 @@ class SelectControl extends AFormControl {
     }
 
     /**
-     * Nastaví obsah.
-     * @param $content AElement|string Obsah elementu.
+     * Nastaví obsah
+     *
+     * @param $content AElement|string Obsah elementu
      * @return $this
-     * @throws Exception
+     * @throws Exception Tato funkce není povolena
      */
     public function addContent($content) {
         throw new Exception("This function is not allowed!");
     }
 
+    /**
+     * Upravená metoda vypsání obsahu selectu
+     */
     protected function writeContent () {
         if ($this->items instanceof OptionControl)
             foreach ($this->items as $item)
                 $this->html .= $item->render();
         elseif (is_array($this->items))
             foreach ($this->items as $key => $value)
-                $this->html .= $this->generateOption($value, $key)->render();
+                $this->html .= (new OptionControl($value, $key))->render();
 
-    }
-
-    protected function generateOption($value, $content) {
-        $option = new OptionControl($value, $content);
-        return $option;
     }
 
 }

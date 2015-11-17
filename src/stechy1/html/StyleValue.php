@@ -11,9 +11,10 @@ class StyleValue {
     private $nameValuePair;
 
     /**
-     * StyleValue constructor.
-     * @param $key string Klíč.
-     * @param $value mixed Hodnota;
+     * StyleValue constructor
+     *
+     * @param $key string Klíč
+     * @param $value mixed Hodnota
      */
     public function __construct($key, $value) {
         $this->nameValuePair = new NameValuePair($key, $value);
@@ -22,14 +23,14 @@ class StyleValue {
     }
 
     /**
-     * @return string Vrátí klíč.
+     * @return string Vrátí klíč
      */
     public function getKey() {
         return $this->nameValuePair->getKey();
     }
 
     /**
-     * @return mixed Vrátí hodnotu.
+     * @return mixed Vrátí hodnotu
      */
     public function getValue() {
         return $this->nameValuePair->getValue();

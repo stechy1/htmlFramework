@@ -10,8 +10,9 @@ class ImageElement extends AElement {
     const SIGN = 'img';
     
     /**
-     * DivElement constructor.
-     * @param null $content
+     * DivElement constructor
+     *
+     * @param AElement[]|AElement|string|null $content
      */
     public function __construct($content = null) {
         parent::__construct(self::SIGN, $content);
@@ -20,9 +21,10 @@ class ImageElement extends AElement {
     }
 
     /**
-     * Nastaví zdrojovou cestu k obrázku.
+     * Nastaví zdrojovou cestu k obrázku
+     *
      * @param $source string
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setSource($source) {
         $this->addAttribute(new NameValuePair('src', $source));
@@ -31,9 +33,10 @@ class ImageElement extends AElement {
     }
 
     /**
-     * Nastaví popis obrázku.
+     * Nastaví popis obrázku
+     *
      * @param $alt string
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setAlt ($alt) {
         $this->addAttribute(new NameValuePair('alt', $alt));
@@ -42,9 +45,10 @@ class ImageElement extends AElement {
     }
 
     /**
-     * Nastaví šířku obrázku.
+     * Nastaví šířku obrázku
+     *
      * @param $width int
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setWidth($width) {
         $this->addAttribute(new NameValuePair('width', $width . 'px'));
@@ -53,9 +57,10 @@ class ImageElement extends AElement {
     }
 
     /**
-     * Nastaví výšku obrázku.
+     * Nastaví výšku obrázku
+     *
      * @param $height int
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setHeight ($height) {
         $this->addAttribute(new NameValuePair('height', $height));

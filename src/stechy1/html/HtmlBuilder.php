@@ -11,7 +11,8 @@ class HtmlBuilder {
     private $html;
 
     /**
-     * HtmlBuilder constructor.
+     * HtmlBuilder constructor
+     *
      * @param $container AElement|string
      */
     public function __construct($container = null) {
@@ -21,15 +22,22 @@ class HtmlBuilder {
     }
 
     /**
-     * Přidá element do pole pro sestavení.
-     * @param AElement $element HTML prvek.
+     * Přidá element do pole pro sestavení
+     *
+     * @param AElement $element HTML prvek
      */
     public function addElement(AElement $element) {
+        if(is_array($element))
+            $this->container = array_merge($this->container, $element);
+        else
+            $this->container[] = $element;
+
         $this->container[] = $element;
     }
 
     /**
-     * Sestaví validní html kód pro elementy.
+     * Sestaví validní html kód pro elementy
+     *
      * @return $this
      */
     public function build() {
@@ -41,8 +49,9 @@ class HtmlBuilder {
     }
 
     /**
-     * Vrátí validní HTML kód prvku.
-     * @return string HTML kód.
+     * Vrátí validní HTML kód prvku
+     *
+     * @return string HTML kód
      */
     public function render() {
         if($this->html == null)

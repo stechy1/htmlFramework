@@ -41,7 +41,7 @@ class ANumericInputControl extends AInputControll {
      * Nastaví minimální hodnotu čísla
      *
      * @param $min int Minimální hodnota
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setMinValue($min) {
         $this->addRule(new MinValueRule($min));
@@ -53,7 +53,7 @@ class ANumericInputControl extends AInputControll {
      * Nastaví maximální hodnotu čísla
      *
      * @param $maxValue int Maximální hodnota
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setMaxValue($maxValue) {
         $this->addRule(new MaxValueRule($maxValue));
@@ -65,7 +65,7 @@ class ANumericInputControl extends AInputControll {
      * Nastaví krokování čísla kontrolky
      *
      * @param $step int Krok
-     * @return $this Vrátí sám sebe
+     * @return $this
      */
     public function setStep($step) {
         $this->addAttribute(new NameValuePair('step', $step));

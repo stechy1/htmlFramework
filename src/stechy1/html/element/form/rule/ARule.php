@@ -5,45 +5,6 @@ namespace stechy1\html\element\form\rule;
 
 abstract class ARule {
 
-    //region Konstanty pro pravidla chování kontrolky
-    /**
-     * Pravidlo pro povinné pole
-     */
-    const RULE_REQUIRED = 0;
-    /**
-     * Pravidlo pro maximální délku
-     */
-    const RULE_MAX_LENGTH = 1;
-    /**
-     * Pravidlo pro heslo
-     */
-    const RULE_PASSWORD = 2;
-    /**
-     * Pravidlo pro datum a čas
-     */
-    const RULE_DATETIME = 3;
-    /**
-     * Pravidlo pro regulární výraz
-     */
-    const RULE_PATTERN = 4;
-    /**
-     * Pravidlo pro povinný soubor
-     */
-    const RULE_REQUIRED_FILE = 5;
-    /**
-     * Regulární výraz pro URL
-     */
-    const PATTERN_URL = '(http|https)://.*';
-    /**
-     * Regulární výraz pro celá čísla
-     */
-    const PATTERN_INTEGER = '[0-9]+';
-    /**
-     * Reglární výraz pro email
-     */
-    const PATTERN_EMAIL = '[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
-    //endregion
-
     protected $rule;
     protected $errorMessage;
 

@@ -15,8 +15,9 @@ class MaxLengthRule extends ARule {
     private $maxLength;
 
     /**
-     * RequiredRule constructor.
-     * @param int $maxLength Maximální délka řetězce.
+     * RequiredRule constructor
+     *
+     * @param int $maxLength Maximální délka řetězce
      */
     public function __construct($maxLength) {
         parent::__construct('Maximální délka hodnoty je: ' . $maxLength, $maxLength);
@@ -26,9 +27,10 @@ class MaxLengthRule extends ARule {
     }
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     public function validateRule($value) {
         return true;

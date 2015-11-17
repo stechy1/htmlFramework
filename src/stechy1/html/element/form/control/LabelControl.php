@@ -3,7 +3,6 @@
 namespace stechy1\html\element\form\control;
 
 
-use stechy1\html\element\AElement;
 use stechy1\html\NameValuePair;
 
 class LabelControl extends AFormControl {
@@ -11,8 +10,9 @@ class LabelControl extends AFormControl {
     const SIGN = 'label';
 
     /**
-     * TextAreaControl constructor.
-     * @param AElement[]|AElement|string|null $label Text v labelu.
+     * TextAreaControl constructor
+     *
+     * @param string|null $label Text v labelu
      */
     public function __construct($label = null) {
         parent::__construct(self::SIGN, null);
@@ -22,9 +22,10 @@ class LabelControl extends AFormControl {
     }
 
     /**
-     * Nastaví, pro jakou kontrolku má label být.
+     * Nastaví, pro jakou kontrolku má label být
+     *
      * @param $controlID string ID kontrolky
-     * @return $this Vrátí sám sebe.
+     * @return $this
      */
     public function setFor($controlID) {
         $this->addAttribute(new NameValuePair('for', $controlID));
@@ -33,9 +34,10 @@ class LabelControl extends AFormControl {
     }
 
     /**
+     * Přiřadí label formuláři
      *
-     * @param $formID string ID formuláře
-     * @return $this Vrátí sám sebe.
+     * @param $formID string ID formulář
+     * @return $this
      */
     public function setForm($formID) {
         $this->addAttribute((new NameValuePair('form', $formID)));

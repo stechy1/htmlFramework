@@ -10,8 +10,9 @@ class ParagraphElement extends AElement {
     const SIGN = "p";
 
     /**
-     * ParagraphElement constructor.
-     * @param null $content
+     * ParagraphElement constructor
+     *
+     * @param AElement[]|AElement|string|null $content
      */
     public function __construct($content = null) {
         parent::__construct(self::SIGN, $content);
@@ -20,9 +21,10 @@ class ParagraphElement extends AElement {
     }
 
     /**
-     * Nastaví nadpis odstavce.
-     * @param $title string Nadpis odstavce.
-     * @return $this Vrátí sám sebe.
+     * Nastaví nadpis odstavce
+     *
+     * @param $title string Nadpis odstavce
+     * @return $this
      */
     public function setTitle($title) {
         $this->addAttribute(new NameValuePair('title', $title));

@@ -15,9 +15,10 @@ class HeadingElement extends AElement{
 
 
     /**
-     * HeadingElement constructor.
+     * HeadingElement constructor
+     *
      * @param $heading int
-     * @param null $content
+     * @param AElement[]|AElement|string|null $content
      */
     public function __construct($heading = self::H1, $content = null) {
         parent::__construct(self::SIGN . $heading, $content);

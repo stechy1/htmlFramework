@@ -8,7 +8,7 @@ class NumberRule extends ARule {
     const RULE = '[0-9]';
 
     /**
-     * NumberRule constructor.
+     * NumberRule constructor
      */
     public function __construct () {
         parent::__construct("Řetězec neobsahuje pouze čísla");
@@ -16,9 +16,10 @@ class NumberRule extends ARule {
 
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     public function validateRule ($value) {
         return preg_match('~^' . self::RULE . '$~u', $value);

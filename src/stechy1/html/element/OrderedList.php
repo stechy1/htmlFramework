@@ -7,9 +7,9 @@ use Exception;
 
 class OrderedList extends AElement {
 
-    const SIGN = "ul";
+    const SIGN = "ol";
     /**
-     * @var ListItem[]|string[] Pole položek seznamu.
+     * @var ListItem[]|ListItem|string[]|string Pole položek seznamu
      */
     private $items;
 
@@ -21,8 +21,9 @@ class OrderedList extends AElement {
     }
 
     /**
-     * Nastaví obsah.
-     * @param $content AElement|string Obsah elementu.
+     * Nastaví obsah
+     *
+     * @param $content AElement[]|AElement|string|null Obsah elementu
      * @return $this
      * @throws Exception
      */
@@ -31,14 +32,26 @@ class OrderedList extends AElement {
     }
 
     /**
-     * @param $items array Pole položek seznamu
+     * @param $items ListItem[]|ListItem|string[]|string Pole položek seznamu
      */
     public function setItems($items) {
-        $this->items = $items;
+        if(!is_array($items)) {
+            $tmpItems = array();
+            foreach($items as $key => $value) {
+                $item = $value;
+                if(is_string($value))
+                    $item = new ListItem($value);
+                $item->setID($key);
+
+                $tmpItems[] = $item;
+            }
+            $this->items = $tmpItems;
+        } else
+            $this->items = $items;
     }
 
     /**
-     * Metoda, která se stará o samotné sestavení obsahu elementu.
+     * Metoda, která se stará o samotné sestavení obsahu elementu
      */
     protected function writeContent() {
         //parent::writeContent();
@@ -47,21 +60,8 @@ class OrderedList extends AElement {
                 $this->html .= $listItem->render();
         elseif (is_array($this->items)) {
             foreach ($this->items as $key => $value) {
-                $this->html .= $this->generateListItem($key, $value)->render();
+                $this->html .= (new ListItem($value))->setID($key)->setEscape(false)->render();
             }
         }
     }
-
-    /**
-     * @param $key string
-     * @param $value string
-     * @return ListItem
-     */
-    protected function generateListItem($key, $value) {
-        $item = new ListItem($value);
-        $item->setID($key);
-
-        return $item;
-    }
-
 }

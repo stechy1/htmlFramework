@@ -14,12 +14,13 @@ class DisabledRule extends ARule {
 
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     public function validateRule($value) {
-        // TODO: Implement validateRule() method.
+        return true;
     }
 
     public function __toString () {

@@ -8,17 +8,19 @@ use stechy1\html\NameValuePair;
 class StepRule extends ARule {
 
     /**
-     * StepRule constructor.
-     * @param int $step Změna hodnoty.
+     * StepRule constructor
+     *
+     * @param int $step Změna hodnoty
      */
     public function __construct($step) {
         parent::__construct('Povolený krok čísel je: ' . $step, $step);
     }
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     public function validateRule($value) {
         return ($value % $this->rule) == 0;

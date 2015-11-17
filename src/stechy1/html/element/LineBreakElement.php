@@ -10,7 +10,7 @@ class LineBreakElement extends AElement {
     const SIGN = 'br';
 
     /**
-     * LineBreakElement constructor.
+     * LineBreakElement constructor
      */
     public function __construct () {
         parent::__construct(self::SIGN, null);
@@ -20,8 +20,9 @@ class LineBreakElement extends AElement {
     }
 
     /**
-     * Nastaví obsah.
-     * @param $content AElement|string Obsah elementu.
+     * Nastaví obsah
+     *
+     * @param $content AElement[]|AElement|string|null Obsah elementu
      * @return $this
      * @throws Exception
      */

@@ -9,6 +9,8 @@
 namespace stechy1\html\element\form\control;
 
 
+use Exception;
+use stechy1\html\element\AElement;
 use stechy1\html\NameValuePair;
 
 class OptionControl extends AFormControl {
@@ -17,8 +19,9 @@ class OptionControl extends AFormControl {
 
     /**
      * OptionControl constructor
+     *
      * @param string $value
-     * @param null $content
+     * @param AElement[]|AElement|string|array $content
      */
     public function __construct($value, $content = null) {
         parent::__construct(self::SIGN, null);
@@ -28,10 +31,26 @@ class OptionControl extends AFormControl {
         return $this;
     }
 
+    /**
+     * Nastaví hodnotu
+     *
+     * @param mixed $value
+     * @return $this
+     */
     public function setValue ($value) {
         if ($value != null);
             $this->addAttribute(new NameValuePair("value", $value));
 
         return $this;
+    }
+
+    /**
+     * Nastaví placeholder
+     *
+     * @param $placeholder string Obsah placeholderu
+     * @throws Exception
+     */
+    public function setPlaceholder ($placeholder) {
+        throw new Exception("Tato funkce není povolena");
     }
 }

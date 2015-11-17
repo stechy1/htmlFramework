@@ -8,7 +8,8 @@ use stechy1\html\element\form\rule\ARule;
 class MinLengthRule extends ARule {
 
     /**
-     * RequiredRule constructor.
+     * RequiredRule constructor
+     *
      * @param int $minLength
      */
     public function __construct($minLength) {
@@ -16,9 +17,10 @@ class MinLengthRule extends ARule {
     }
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     public function validateRule($value) {
         return true;

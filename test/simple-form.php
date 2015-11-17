@@ -10,7 +10,6 @@ html<!doctype html>
 
 use stechy1\html\element\DivElement;
 use stechy1\html\element\form\control\input\CheckBoxInput;
-use stechy1\html\element\form\control\input\html5\EmailInput;
 use stechy1\html\element\form\control\input\html5\NumberInput;
 use stechy1\html\element\form\control\input\html5\UrlInput;
 use stechy1\html\element\form\control\input\RadioInput;
@@ -51,7 +50,9 @@ $form->addContent([
     (new LineBreakElement()),
     (new SelectControl("selection",["jedna" => "prvni", "dva" => "druhy"])),
     (new LineBreakElement()),
-    (new UrlInput("url", "Url adresa seznamu"))
+    (new UrlInput("url", "Url adresa seznamu")),
+    (new LineBreakElement()),
+    (new OrderedList(["jedna", "dva", "tri"]))
 ]);
 
 echo $form->render();

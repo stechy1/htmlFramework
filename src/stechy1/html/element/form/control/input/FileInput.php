@@ -3,6 +3,7 @@
 namespace app\html\element\form\control\input;
 
 
+use stechy1\html\element\AElement;
 use stechy1\html\element\form\control\input\AInputControll;
 use stechy1\html\NameValuePair;
 
@@ -14,7 +15,7 @@ class FileInput extends AInputControll {
      * FileInput constructor
      *
      * @param string $name Název kontrolky
-     * @param null $label Popisek
+     * @param AElement|string|null $label Popisek
      */
     public function __construct($name, $label = null) {
         return parent::__construct(self::TYPE, $name, $label);

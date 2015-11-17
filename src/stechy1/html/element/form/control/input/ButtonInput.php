@@ -4,6 +4,8 @@ namespace stechy1\html\element\form\control\input;
 
 
 
+use Exception;
+use stechy1\html\element\AElement;
 use stechy1\html\NameValuePair;
 
 class ButtonInput extends AInputControll {
@@ -11,9 +13,10 @@ class ButtonInput extends AInputControll {
     const TYPE = 'button';
 
     /**
-     * TextInput constructor.
-     * @param string $name Název kontrolky.
-     * @param null $label Popisek.
+     * TextInput constructor
+     *
+     * @param string $name Název kontrolky
+     * @param AElement|string|null $label Popisek
      */
     public function __construct($name, $label = null) {
         $this->setValue($label);
@@ -21,15 +24,18 @@ class ButtonInput extends AInputControll {
     }
 
     /**
-     * Nastaví událost po kliknutí na tlačítko.
-     * Předpokládá se javascriptový řetězec, proto je vypnuté escapování.
+     * Nastaví událost po kliknutí na tlačítko
+     *
+     * Předpokládá se javascriptový řetězec, proto je vypnuté escapování
      * @param string $function
      */
     public function setOnClick ($function) {
         $this->addAttribute(new NameValuePair('onclick', $function, false));
     }
 
-    public final function addRule($rule) {}
+    public final function addRule($rule) {
+        throw new Exception("Tato funkce není povolena");
+    }
 
 
 }

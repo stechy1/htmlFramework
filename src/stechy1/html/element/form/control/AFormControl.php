@@ -15,26 +15,27 @@ abstract class AFormControl extends AElement implements IControl {
      */
     protected $name;
     /**
-     * @var mixed Hodnota v kontrolce.
+     * @var mixed Hodnota v kontrolce
      */
     protected $value;
     /**
-     * @var LabelControl Popisek kontrolky.
+     * @var LabelControl Popisek kontrolky
      */
     protected $label;
     /**
-     * @var ARule[] Pole obsahující validační pravidla.
+     * @var ARule[] Pole obsahující validační pravidla
      */
     protected $rules = array();
     /**
-     * @var array Kolekce s chybami v kontrolce.
+     * @var array Kolekce s chybami v kontrolce
      */
     protected $errorArray = array();
 
     /**
      * @param string $sign Značka elementu
+     *
      * @param string|null $name Název kontrolky
-     * @param AElement|string|null $label Popisek.
+     * @param AElement|string|null $label Popisek
      */
     public function __construct($sign, $name = null, $label = null) {
         parent::__construct($sign);
@@ -51,9 +52,10 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Přidá validační pravidlo pro kontrolku.
-     * @param ARule[]|ARule $rule Validační pravidlo.
-     * @return $this Vrátí sám sebe.
+     * Přidá validační pravidlo pro kontrolku
+     *
+     * @param ARule[]|ARule $rule Validační pravidlo
+     * @return $this
      */
     public function addRule ($rule) {
         if(is_array($rule))
@@ -65,7 +67,7 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Sestavý validní HTML kód.
+     * Sestavý validní HTML kód
      */
     public function build() {
         if($this->label !== null && $this->label instanceof LabelControl)
@@ -82,7 +84,8 @@ abstract class AFormControl extends AElement implements IControl {
 
     /**
      * Nastaví hodnotu kontrolce
-     * @param $value mixed Hodnota.
+     *
+     * @param $value mixed Hodnota
      * @return $this
      */
     public function setValue($value) {
@@ -92,15 +95,17 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Nastaví placeholder.
-     * @param $placeholder string Obsah placeholderu.
+     * Nastaví placeholder
+     *
+     * @param $placeholder string Obsah placeholderu
      */
     public function setPlaceholder ($placeholder) {
         $this->addAttribute(new NameValuePair('placeholder', $placeholder));
     }
 
     /**
-     * Vrátí hodnotu kontrolky.
+     * Vrátí hodnotu kontrolky
+     *
      * @return mixed
      */
     public function getValue() {
@@ -109,7 +114,8 @@ abstract class AFormControl extends AElement implements IControl {
 
     /**
      * Zvaliduje kontrolku podle pravidel
-     * @return boolean True, pokud je kontrolka validní.
+     *
+     * @return boolean True, pokud je kontrolka validní
      */
     public function isValid() {
         foreach($this->rules as $rule) {
@@ -123,7 +129,8 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Vrátí chyby které vznikly při validaci kontrolky.
+     * Vrátí chyby které vznikly při validaci kontrolky
+     *
      * @return array
      */
     public function getErrors() {
@@ -131,7 +138,8 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Vrátí identifikační název kontrolky.
+     * Vrátí identifikační název kontrolky
+     *
      * @return string
      */
     public function getName() {
@@ -139,7 +147,8 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Vrátí referenci na label.
+     * Vrátí referenci na label
+     *
      * @return LabelControl
      */
     public function getLabel () {
@@ -147,9 +156,10 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
-     * Nastaví label pro kontrolku.
+     * Nastaví label pro kontrolku
+     *
      * @param LabelControl|string $label
-     * @return $this Vrátí sám sebe.
+     * @return $this
      */
     public function setLabel($label) {
         if (is_string($label))
@@ -161,17 +171,16 @@ abstract class AFormControl extends AElement implements IControl {
         return $this;
     }
 
-    //region Metody nastavující chování kontrolky.
     /**
-     * Nastaví tooltip kontrolky.
-     * @param $title string Text v tooltipu.
-     * @return $this Vrátí sám sebe.
+     * Nastaví tooltip kontrolky
+     *
+     * @param $title string Text v tooltipu
+     * @return $this
      */
     public function setTooltip ($title) {
         $this->addAttribute(new NameValuePair('title', $title));
 
         return $this;
     }
-    //endregion
 
 }

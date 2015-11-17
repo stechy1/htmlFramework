@@ -10,19 +10,21 @@ namespace stechy1\html\element\form\rule;
 class RequiredRule extends ARule {
 
     /**
-     * RequiredRule constructor.
+     * RequiredRule constructor
      */
     public function __construct() {
         return parent::__construct('Povinné pole');
     }
 
     /**
-     * Zvaliduje hodnotu.
-     * @param $value mixed Validovaná hodnota.
-     * @return boolean True, pokud je hodnota validní, jinak false.
+     * Zvaliduje hodnotu
+     *
+     * @param $value mixed Validovaná hodnota
+     * @return boolean True, pokud je hodnota validní, jinak false
      */
     public function validateRule($value) {
-        return !empty($value);
+        $x = !(!isset($value) || trim($value)==='');
+        return $x;
     }
 
     function __toString() {

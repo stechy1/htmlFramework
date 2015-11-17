@@ -9,7 +9,7 @@ class SmallElement extends AElement {
 
     /**
      * DivElement constructor.
-     * @param null $content
+     * @param AElement[]|AElement|string|null $content
      */
     public function __construct($content = null) {
         parent::__construct(self::SIGN, $content);
