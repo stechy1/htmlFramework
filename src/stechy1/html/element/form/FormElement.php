@@ -12,7 +12,7 @@ use stechy1\html\NameValuePair;
  * Class FormElement Třída reprezentuje HTML formulář
  * @package html\element
  */
-final class FormElement extends AElement {
+class FormElement extends AElement {
 
     const SIGN = "form";
 
