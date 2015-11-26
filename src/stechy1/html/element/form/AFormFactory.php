@@ -60,4 +60,14 @@ class AFormFactory implements IFormFactory {
     public function getErrors () {
         return $this->form->getErrors();
     }
+
+    /**
+     * Vrátí pole všech hodnot, nebo hodnotu podle klíče
+     *
+     * @param string|null $key Klíč
+     * @return array|string
+     */
+    public function getData ($key = null) {
+        return $this->form->getData($key);
+    }
 }
