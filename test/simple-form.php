@@ -35,12 +35,12 @@ $form->addContent([
     (new LineBreakElement()),
     'mail' => (new TextInput("mail"))->addRule(new EmailRule())->setLabel("E-mail"),
     (new SubmitInput("submit")),
-    (new DivElement([
+    'checkboxes' => (new DivElement([
         (new CheckBoxInput('ch1', 'check1', 'CheckBox1')),
         (new CheckBoxInput('ch2', 'check2', 'CheckBox2')),
         (new CheckBoxInput('ch3', 'check3', 'CheckBox3'))
     ])),
-    (new DivElement([
+    'radiobuttons' => (new DivElement([
         (new RadioInput('rad1', 'radio1', 'RadioInput1')),
         (new RadioInput('rad2', 'radio2', 'RadioInput2')),
         (new RadioInput('rad3', 'radio3', 'RadioInput3'))
@@ -70,6 +70,20 @@ else
 
 <form>
     <?= $form['vek'] ?>
+    <br>
+    <?= $form['mail'] ?>
+    <br>
+    <input type="submit">
+    <?= $form['checkboxes'] ?>
+    <?= $form['radiobuttons'] ?>
+    <br>
+    <?= $form['non-empty'] ?>
+    <br>
+    <?= $form['selection'] ?>
+    <br>
+    <?= $form['url'] ?>
+    <br>
+    <?= $form['ordered-list'] ?>
 </form>
 
 </body>
