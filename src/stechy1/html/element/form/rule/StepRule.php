@@ -3,7 +3,7 @@
 namespace stechy1\html\element\form\rule;
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class StepRule extends ARule {
 
@@ -27,6 +27,6 @@ class StepRule extends ARule {
     }
 
     function __toString() {
-        return (new NameValuePair('step', $this->rule))->__toString();
+        return (new KeyPairValue('step', $this->rule))->__toString();
     }
 }

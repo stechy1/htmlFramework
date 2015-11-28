@@ -11,7 +11,7 @@ namespace stechy1\html\element\form\control;
 
 use Exception;
 use stechy1\html\element\AElement;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class OptionControl extends AFormControl {
 
@@ -39,7 +39,7 @@ class OptionControl extends AFormControl {
      */
     public function setValue ($value) {
         if ($value != null);
-            $this->addAttribute(new NameValuePair("value", $value));
+            $this->addAttribute(new KeyPairValue("value", $value));
 
         return $this;
     }

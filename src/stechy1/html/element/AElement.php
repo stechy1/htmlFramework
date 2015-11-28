@@ -3,10 +3,11 @@
 namespace stechy1\html\element;
 
 
+use stechy1\html\AAttribute;
 use stechy1\html\StyleValue;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
-abstract class AElement implements IElement, IDecorative {
+abstract class AElement implements \ArrayAccess {
 
     /**
      * @var string Obsah HTML kódu
@@ -33,13 +34,9 @@ abstract class AElement implements IElement, IDecorative {
      */
     protected $styleArray = array();
     /**
-     * @var NameValuePair[] Pole NameValuePair objektů představující jednotlivé attributy
+     * @var KeyPairValue[] Pole NameValuePair objektů představující jednotlivé attributy
      */
     protected $attributeArray = array();
-    /**
-     * @var string[]|AElement[] Pole řetězců, nebo AElement objektů představující obsah elementu
-     */
-    protected $contentArray = array();
     /**
      * @var bool True, pokud je HTML element párový, jinak false
      */
@@ -130,20 +127,23 @@ abstract class AElement implements IElement, IDecorative {
     /**
      * Přidá danému elementu atribut
      *
-     * @param $attribute NameValuePair|string|array Nový atribut
+     * @param $attribute KeyPairValue|string|array Nový atribut
      * @return $this
      */
     public function addAttribute($attribute) {
         if(is_array($attribute))
             $this->attributeArray = array_merge($this->attributeArray, $attribute);
         else
-            $this->attributeArray[] = $attribute;
+            if ($attribute instanceof AAttribute) {
+                $this->attributeArray[$attribute->getKey()] = $attribute;
+            } else
+                $this->attributeArray[] = $attribute;
 
         return $this;
     }
 
     /**
-     * Nastaví obsah.
+     * Nastaví obsah
      *
      * @param $content AElement[]|AElement|string|array Obsah elementu
      * @return $this
@@ -151,8 +151,12 @@ abstract class AElement implements IElement, IDecorative {
     public function addContent($content) {
         if(is_array($content))
             $this->content = array_merge($this->content, $content);
-        else
-            $this->content[] = $content;
+        else {
+            if ($content instanceof AElement && $content->getAttribute('name') != null)
+                $this->content[$content->getAttribute('name')] = $content;
+            else
+                $this->content[] = $content;
+        }
 
         return $this;
     }
@@ -236,6 +240,7 @@ abstract class AElement implements IElement, IDecorative {
         if($this->pair)
             $this->html .= '</' . $this->sign . '>';
     }
+
     /**
      * @return string Vrátí validní HTML kód, pokud není sestavený, tak ho sestaví
      */
@@ -254,6 +259,53 @@ abstract class AElement implements IElement, IDecorative {
     public function isPair() {
         return $this->pair;
     }
+
+    /**
+     * Vrátí atribut podle zadaného klíče
+     *
+     * @param $key string Klíč
+     * @return null|AAttribute
+     */
+    public function getAttribute($key) {
+        return isset($this->attributeArray[$key]) ? $this->attributeArray[$key] : null;
+    }
+
+    /**
+     * @param mixed $offset
+     * @return mixed
+     */
+    public function offsetExists ($offset) {
+        return isset($this->content[$offset]);
+    }
+
+    /**
+     * @param mixed $offset
+     * @return mixed
+     */
+    public function offsetGet ($offset) {
+        return isset($this->content[$offset]) ? $this->content[$offset] : null;
+    }
+
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     * @return mixed
+     */
+    public function offsetSet ($offset, $value) {
+        if (is_null($offset))
+            $this->content[] = $value;
+        else
+            $this->content[$offset] = $value;
+    }
+
+    /**
+     * @param mixed $offset
+     * @return mixed
+     */
+    public function offsetUnset ($offset) {
+        unset($this->content[$offset]);
+    }
+
 
     function __toString() {
         return $this->render();

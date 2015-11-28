@@ -6,7 +6,7 @@ namespace stechy1\html\element\form\control;
 use stechy1\html\element\AElement;
 use stechy1\html\element\form\IControl;
 use stechy1\html\element\form\rule\ARule;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 abstract class AFormControl extends AElement implements IControl {
 
@@ -73,9 +73,9 @@ abstract class AFormControl extends AElement implements IControl {
         if($this->label !== null && $this->label instanceof LabelControl)
             $this->html .= $this->label->render();
         if($this->name !== null)
-            $this->addAttribute(new NameValuePair('name', $this->name));
+            $this->addAttribute(new KeyPairValue('name', $this->name));
         if(!empty($this->value))
-            $this->addAttribute(new NameValuePair('value', $this->value));
+            $this->addAttribute(new KeyPairValue('value', $this->value));
         foreach($this->rules as $rule)
             $this->addAttribute($rule);
         parent::build();
@@ -100,7 +100,7 @@ abstract class AFormControl extends AElement implements IControl {
      * @param $placeholder string Obsah placeholderu
      */
     public function setPlaceholder ($placeholder) {
-        $this->addAttribute(new NameValuePair('placeholder', $placeholder));
+        $this->addAttribute(new KeyPairValue('placeholder', $placeholder));
     }
 
     /**
@@ -166,7 +166,7 @@ abstract class AFormControl extends AElement implements IControl {
             $label = (new LabelControl($label));
 
         $this->label = $label;
-        $this->label->addAttribute(new NameValuePair("for", $this->getName()));
+        $this->label->addAttribute(new KeyPairValue("for", $this->getName()));
 
         return $this;
     }
@@ -178,7 +178,7 @@ abstract class AFormControl extends AElement implements IControl {
      * @return $this
      */
     public function setTooltip ($title) {
-        $this->addAttribute(new NameValuePair('title', $title));
+        $this->addAttribute(new KeyPairValue('title', $title));
 
         return $this;
     }

@@ -4,7 +4,7 @@ namespace stechy1\html\element\form\rule;
 
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class MaxValueRule extends ARule {
 
@@ -28,6 +28,6 @@ class MaxValueRule extends ARule {
     }
 
     function __toString() {
-        return (new NameValuePair('max', $this->rule))->__toString();
+        return (new KeyPairValue('max', $this->rule))->__toString();
     }
 }

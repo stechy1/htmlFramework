@@ -6,7 +6,7 @@ namespace stechy1\html\element\form\control;
 
 use stechy1\html\element\AElement;
 use stechy1\html\element\form\rule\MaxLengthRule;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class TextAreaControl extends AFormControl {
 
@@ -52,7 +52,7 @@ class TextAreaControl extends AFormControl {
      * @return $this
      */
     public function setCols($count) {
-        $this->addAttribute(new NameValuePair('cols', $count));
+        $this->addAttribute(new KeyPairValue('cols', $count));
 
         return $this;
     }
@@ -76,7 +76,7 @@ class TextAreaControl extends AFormControl {
      * @return $this
      */
     public function setRows ($count) {
-        $this->addAttribute(new NameValuePair('rows', $count));
+        $this->addAttribute(new KeyPairValue('rows', $count));
 
         return $this;
     }

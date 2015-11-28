@@ -6,7 +6,7 @@ namespace stechy1\html\element\form;
 use stechy1\html\element\form\control\input\HiddenInput;
 use stechy1\html\element\AElement;
 use stechy1\html\element\form\control\AFormControl;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 /**
  * Class FormElement Třída reprezentuje HTML formulář
@@ -105,7 +105,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function build() {
-        $this->addAttribute(new NameValuePair('method', $this->method));
+        $this->addAttribute(new KeyPairValue('method', $this->method));
         return parent::build();
     }
 
@@ -210,7 +210,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function setAction($action) {
-        $this->addAttribute(new NameValuePair('action', $action));
+        $this->addAttribute(new KeyPairValue('action', $action));
 
         return $this;
     }
@@ -222,7 +222,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function setAccentCharset ($charset) {
-        $this->addAttribute(new NameValuePair('accept-charset', $charset));
+        $this->addAttribute(new KeyPairValue('accept-charset', $charset));
 
         return $this;
     }
@@ -234,7 +234,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function setAutocomplete($autocomplete) {
-        $this->addAttribute(new NameValuePair('autocomplete', $autocomplete));
+        $this->addAttribute(new KeyPairValue('autocomplete', $autocomplete));
 
         return $this;
     }
@@ -246,7 +246,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function setEnctype($enctype) {
-        $this->addAttribute(new NameValuePair('enctype', $enctype));
+        $this->addAttribute(new KeyPairValue('enctype', $enctype));
 
         return $this;
     }
@@ -258,7 +258,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function setName($name) {
-        $this->addAttribute(new NameValuePair('name', $name));
+        $this->addAttribute(new KeyPairValue('name', $name));
 
         return $this;
     }
@@ -281,7 +281,7 @@ class FormElement extends AElement {
      * @return $this
      */
     public function setTarget($target) {
-        $this->addAttribute(new NameValuePair('target', $target));
+        $this->addAttribute(new KeyPairValue('target', $target));
 
         return $this;
     }

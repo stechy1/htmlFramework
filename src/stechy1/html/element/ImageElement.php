@@ -3,7 +3,7 @@
 namespace stechy1\html\element;
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class ImageElement extends AElement {
 
@@ -27,7 +27,7 @@ class ImageElement extends AElement {
      * @return $this
      */
     public function setSource($source) {
-        $this->addAttribute(new NameValuePair('src', $source));
+        $this->addAttribute(new KeyPairValue('src', $source));
 
         return $this;
     }
@@ -39,7 +39,7 @@ class ImageElement extends AElement {
      * @return $this
      */
     public function setAlt ($alt) {
-        $this->addAttribute(new NameValuePair('alt', $alt));
+        $this->addAttribute(new KeyPairValue('alt', $alt));
 
         return $this;
     }
@@ -51,7 +51,7 @@ class ImageElement extends AElement {
      * @return $this
      */
     public function setWidth($width) {
-        $this->addAttribute(new NameValuePair('width', $width . 'px'));
+        $this->addAttribute(new KeyPairValue('width', $width . 'px'));
 
         return $this;
     }
@@ -63,7 +63,7 @@ class ImageElement extends AElement {
      * @return $this
      */
     public function setHeight ($height) {
-        $this->addAttribute(new NameValuePair('height', $height));
+        $this->addAttribute(new KeyPairValue('height', $height));
 
         return $this;
     }

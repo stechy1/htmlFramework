@@ -4,7 +4,7 @@ namespace stechy1\html\element\form\rule;
 
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class MinValueRule extends ARule {
     /**
@@ -27,7 +27,7 @@ class MinValueRule extends ARule {
     }
 
     function __toString() {
-        return (new NameValuePair('min', $this->rule))->__toString();
+        return (new KeyPairValue('min', $this->rule))->__toString();
     }
 
 

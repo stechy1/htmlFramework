@@ -6,7 +6,7 @@ namespace stechy1\html\element\form\control\input;
 
 use Exception;
 use stechy1\html\element\AElement;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class ButtonInput extends AInputControll {
 
@@ -30,7 +30,7 @@ class ButtonInput extends AInputControll {
      * @param string $function
      */
     public function setOnClick ($function) {
-        $this->addAttribute(new NameValuePair('onclick', $function, false));
+        $this->addAttribute(new KeyPairValue('onclick', $function, false));
     }
 
     public final function addRule($rule) {

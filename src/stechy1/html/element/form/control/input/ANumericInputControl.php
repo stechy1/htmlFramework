@@ -6,7 +6,7 @@ namespace stechy1\html\element\form\control\input;
 use stechy1\html\element\form\control\LabelControl;
 use stechy1\html\element\form\rule\MaxValueRule;
 use stechy1\html\element\form\rule\MinValueRule;
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class ANumericInputControl extends AInputControll {
 
@@ -68,7 +68,7 @@ class ANumericInputControl extends AInputControll {
      * @return $this
      */
     public function setStep($step) {
-        $this->addAttribute(new NameValuePair('step', $step));
+        $this->addAttribute(new KeyPairValue('step', $step));
 
         return $this;
     }

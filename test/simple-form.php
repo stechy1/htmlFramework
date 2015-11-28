@@ -1,4 +1,4 @@
-html<!doctype html>
+<!doctype html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -31,9 +31,9 @@ spl_autoload_register(function($class) {
 
 $form = new FormElement("frm");
 $form->addContent([
-    (new NumberInput("vek"))->setLabel(new LabelControl("Vek"))->setMinValue(-10)->setMaxValue(0),
+    'vek' => (new NumberInput("vek"))->setLabel(new LabelControl("Vek"))->setMinValue(-10)->setMaxValue(0),
     (new LineBreakElement()),
-    (new TextInput("mail"))->addRule(new EmailRule())->setLabel("E-mail"),
+    'mail' => (new TextInput("mail"))->addRule(new EmailRule())->setLabel("E-mail"),
     (new SubmitInput("submit")),
     (new DivElement([
         (new CheckBoxInput('ch1', 'check1', 'CheckBox1')),
@@ -46,16 +46,17 @@ $form->addContent([
         (new RadioInput('rad3', 'radio3', 'RadioInput3'))
     ])),
     (new LineBreakElement()),
-    (new TextInput("non-empty"))->addRule(new RequiredRule())->setLabel("Neprazdna hodnota"),
+    'non-empty' => (new TextInput("non-empty"))->addRule(new RequiredRule())->setLabel("Neprazdna hodnota"),
     (new LineBreakElement()),
-    (new SelectControl("selection",["jedna" => "prvni", "dva" => "druhy"])),
+    'selection' => (new SelectControl("selection",["jedna" => "prvni", "dva" => "druhy"])),
     (new LineBreakElement()),
-    (new UrlInput("url", "Url adresa seznamu")),
+    'url' => (new UrlInput("url", "Url adresa seznamu")),
     (new LineBreakElement()),
-    (new OrderedList(["jedna", "dva", "tri"]))
+    'ordered-list' => (new OrderedList(["jedna", "dva", "tri"]))
 ]);
 
-echo $form->render();
+//echo $form;
+
 var_dump($form->getData());
 
 if ($form->isPostBack())
@@ -66,6 +67,10 @@ else
     echo "Formular nebyl odeslan";
 
 ?>
+
+<form>
+    <?= $form['vek'] ?>
+</form>
 
 </body>
 </html>

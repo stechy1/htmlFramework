@@ -3,12 +3,7 @@
 namespace stechy1\html;
 
 
-class StyleValue {
-
-    /**
-     * @var NameValuePair
-     */
-    private $nameValuePair;
+class StyleValue extends AAttribute {
 
     /**
      * StyleValue constructor
@@ -17,27 +12,20 @@ class StyleValue {
      * @param $value mixed Hodnota
      */
     public function __construct($key, $value) {
-        $this->nameValuePair = new NameValuePair($key, $value);
-
-        return $this;
+        parent::__construct($key, $value);
     }
 
     /**
-     * @return string Vrátí klíč
+     * Vrátí validní html kód
+     *
+     * @return string
      */
-    public function getKey() {
-        return $this->nameValuePair->getKey();
-    }
-
-    /**
-     * @return mixed Vrátí hodnotu
-     */
-    public function getValue() {
-        return $this->nameValuePair->getValue();
+    function render () {
+        return $this->getKey() . ': ' . $this->getValue() . '; ';
     }
 
     function __toString() {
-        return $this->nameValuePair->getKey() . ': ' . $this->nameValuePair->getValue() . '; ';
+        return $this->render();
     }
 
 }

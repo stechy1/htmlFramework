@@ -3,7 +3,7 @@
 namespace stechy1\html\element\form\rule;
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 /**
  * Class MaxLengthRule
@@ -37,6 +37,6 @@ class MaxLengthRule extends ARule {
     }
 
     function __toString() {
-        return (new NameValuePair('maxlength', $this->maxLength))->__toString();
+        return (new KeyPairValue('maxlength', $this->maxLength))->__toString();
     }
 }

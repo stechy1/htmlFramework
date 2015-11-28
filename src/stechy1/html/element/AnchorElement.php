@@ -3,7 +3,7 @@
 namespace stechy1\html\element;
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class AnchorElement extends AElement {
 
@@ -27,7 +27,7 @@ class AnchorElement extends AElement {
      * @return $this
      */
     public function setLocation($address) {
-        $this->addAttribute(new NameValuePair('href', $address));
+        $this->addAttribute(new KeyPairValue('href', $address));
 
         return $this;
     }

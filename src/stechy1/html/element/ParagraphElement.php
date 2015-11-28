@@ -3,7 +3,7 @@
 namespace stechy1\html\element;
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class ParagraphElement extends AElement {
 
@@ -27,7 +27,7 @@ class ParagraphElement extends AElement {
      * @return $this
      */
     public function setTitle($title) {
-        $this->addAttribute(new NameValuePair('title', $title));
+        $this->addAttribute(new KeyPairValue('title', $title));
 
         return $this;
     }

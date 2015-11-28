@@ -3,7 +3,7 @@
 namespace stechy1\html\element\form\control;
 
 
-use stechy1\html\NameValuePair;
+use stechy1\html\KeyPairValue;
 
 class LabelControl extends AFormControl {
 
@@ -28,7 +28,7 @@ class LabelControl extends AFormControl {
      * @return $this
      */
     public function setFor($controlID) {
-        $this->addAttribute(new NameValuePair('for', $controlID));
+        $this->addAttribute(new KeyPairValue('for', $controlID));
 
         return $this;
     }
@@ -40,7 +40,7 @@ class LabelControl extends AFormControl {
      * @return $this
      */
     public function setForm($formID) {
-        $this->addAttribute((new NameValuePair('form', $formID)));
+        $this->addAttribute((new KeyPairValue('form', $formID)));
 
         return $this;
     }

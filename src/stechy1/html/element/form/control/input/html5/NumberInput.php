@@ -27,9 +27,6 @@ class NumberInput extends ANumericInputControl {
         $this->addRule(new NumberRule());
     }
 
-    function __toString () {
-        return '';
-    }
 
 
 }
