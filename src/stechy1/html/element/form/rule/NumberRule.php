@@ -5,7 +5,7 @@ namespace stechy1\html\element\form\rule;
 
 class NumberRule extends ARule {
 
-    const RULE = '[0-9]';
+    const RULE = '^(\s*|\d+)$';
 
     /**
      * NumberRule constructor

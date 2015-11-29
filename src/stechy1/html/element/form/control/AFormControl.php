@@ -98,9 +98,12 @@ abstract class AFormControl extends AElement implements IControl {
      * Nastaví placeholder
      *
      * @param $placeholder string Obsah placeholderu
+     * @return $this
      */
     public function setPlaceholder ($placeholder) {
         $this->addAttribute(new KeyPairValue('placeholder', $placeholder));
+
+        return $this;
     }
 
     /**
@@ -183,4 +186,16 @@ abstract class AFormControl extends AElement implements IControl {
         return $this;
     }
 
+    /**
+     * Nastaví výchozí hodnotu
+     *
+     * @param $value
+     * @return $this
+     */
+    public function setDefaultValue ($value) {
+        if ($this->value == null)
+            $this->value = $value;
+
+        return $this;
+    }
 }

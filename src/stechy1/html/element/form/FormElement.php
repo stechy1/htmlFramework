@@ -190,6 +190,21 @@ class FormElement extends AElement {
         return $this->errorArray;
     }
 
+    /**
+     * Vrátí pole jmen všech kontrolek ve formuláři
+     *
+     * @return array
+     */
+    public function getControlNames() {
+        $arr = array();
+        foreach ($this->controls as $control) {
+            $arr[] = $control->getName();
+        }
+
+        array_shift($arr); // Odstranění první kontrolky - název formuláře
+        return $arr;
+    }
+
     //region Metody, nastavující chování formuláře - nesouvisí s validací
     /**
      * Nastaví metodu odesílání dat z formuláře
