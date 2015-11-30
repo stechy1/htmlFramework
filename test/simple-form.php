@@ -12,6 +12,7 @@ use stechy1\html\element\DivElement;
 use stechy1\html\element\form\control\input\CheckBoxInput;
 use stechy1\html\element\form\control\input\html5\NumberInput;
 use stechy1\html\element\form\control\input\html5\UrlInput;
+use stechy1\html\element\form\control\input\PasswordInput;
 use stechy1\html\element\form\control\input\RadioInput;
 use stechy1\html\element\form\control\input\SubmitInput;
 use stechy1\html\element\form\control\input\TextInput;
@@ -52,7 +53,9 @@ $form->addContent([
     (new LineBreakElement()),
     'url' => (new UrlInput("url", "Url adresa seznamu")),
     (new LineBreakElement()),
-    'ordered-list' => (new OrderedList(["jedna", "dva", "tri"]))
+    'ordered-list' => (new OrderedList(["jedna", "dva", "tri"])),
+    (new LineBreakElement()),
+    'password' => (new PasswordInput("password"))->hideValue()
 ]);
 
 //echo $form;
@@ -68,7 +71,7 @@ else
 
 ?>
 
-<form>
+<form method="post">
     <?= $form['vek'] ?>
     <br>
     <?= $form['mail'] ?>
@@ -84,6 +87,8 @@ else
     <?= $form['url'] ?>
     <br>
     <?= $form['ordered-list'] ?>
+    <br>
+    Heslo: <?= $form['password'] ?>
 </form>
 
 </body>

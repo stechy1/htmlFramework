@@ -11,9 +11,9 @@ use stechy1\html\KeyPairValue;
 abstract class AFormControl extends AElement implements IControl {
 
     /**
-     * @var string Identifikační název kontrolky
+     * @var bool True, pokud se má zobrazit odeslaná hodnota ve formuláři, jinak false
      */
-    protected $name;
+    protected $showValue = true;
     /**
      * @var mixed Hodnota v kontrolce
      */
@@ -39,7 +39,7 @@ abstract class AFormControl extends AElement implements IControl {
      */
     public function __construct($sign, $name = null, $label = null) {
         parent::__construct($sign);
-        $this->name = $name;
+        $this->setName($name);
         $this->setID($name);
         if($label !== null) {
             if (is_string($label))
@@ -72,13 +72,13 @@ abstract class AFormControl extends AElement implements IControl {
     public function build() {
         if($this->label !== null && $this->label instanceof LabelControl)
             $this->html .= $this->label->render();
-        if($this->name !== null)
-            $this->addAttribute(new KeyPairValue('name', $this->name));
-        if(!empty($this->value))
+        if(!empty($this->value) && $this->showValue)
             $this->addAttribute(new KeyPairValue('value', $this->value));
         foreach($this->rules as $rule)
             $this->addAttribute($rule);
+
         parent::build();
+
         return $this;
     }
 
@@ -141,12 +141,21 @@ abstract class AFormControl extends AElement implements IControl {
     }
 
     /**
+     * Nastaví název kontrolky
+     *
+     * @param $name string
+     */
+    public function setName($name) {
+        $this->setAttribute(new KeyPairValue('name', $name));
+    }
+
+    /**
      * Vrátí identifikační název kontrolky
      *
      * @return string
      */
     public function getName() {
-        return $this->name;
+        return $this->getAttribute('name')->getValue();
     }
 
     /**
@@ -195,6 +204,24 @@ abstract class AFormControl extends AElement implements IControl {
     public function setDefaultValue ($value) {
         if ($this->value == null)
             $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Nastavuje, zda-li se bude zobrazovat odeslaná hodnota kontrolky
+     *
+     * @param boolean $showValue True, pro zobrazení odeslané hodnoty, jinak false
+     */
+    public function setShowValue ($showValue) {
+        $this->showValue = $showValue;
+    }
+
+    /**
+     * Zakáže zobrazení odeslané hodnoty kontrolky
+     */
+    public function hideValue () {
+        $this->setShowValue(false);
 
         return $this;
     }

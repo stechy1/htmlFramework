@@ -134,12 +134,25 @@ abstract class AElement implements \ArrayAccess {
         if(is_array($attribute))
             $this->attributeArray = array_merge($this->attributeArray, $attribute);
         else
-            if ($attribute instanceof AAttribute) {
-                $this->attributeArray[$attribute->getKey()] = $attribute;
-            } else
-                $this->attributeArray[] = $attribute;
+            $this->setAttribute($attribute);
 
         return $this;
+    }
+
+    /**
+     * Nastaví atribut
+     *
+     * @param $attribute AAttribute|string
+     * @param null $key
+     */
+    public function setAttribute($attribute, $key = null) {
+        if ($key != null)
+            $this->attributeArray[$key] = $attribute;
+        else
+            if ($attribute instanceof AAttribute)
+                $this->attributeArray[$attribute->getKey()] = $attribute;
+            else
+                $this->attributeArray[] = $attribute;
     }
 
     /**
@@ -152,8 +165,8 @@ abstract class AElement implements \ArrayAccess {
         if(is_array($content))
             $this->content = array_merge($this->content, $content);
         else {
-            if ($content instanceof AElement && $content->getAttribute('name') != null)
-                $this->content[$content->getAttribute('name')] = $content;
+            if ($content instanceof AElement && ($name = $content->getAttribute('name') != null))
+                $this->content[$name] = $content;
             else
                 $this->content[] = $content;
         }
